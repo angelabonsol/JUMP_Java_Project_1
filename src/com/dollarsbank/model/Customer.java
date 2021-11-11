@@ -8,8 +8,8 @@ public class Customer {
 	private String name, address, userId, password, contactNum; 
 	private Account firstAcc;
 	
-	private List<Account> accounts;
-	private List<String> transactions;
+	private List<Account> accounts = new ArrayList<Account>();
+	private List<String> transactions = new ArrayList<String>();
 	
 	public Customer() {
 		this("N/A", "N/A", "U000000", "password", "123456789", new Account());

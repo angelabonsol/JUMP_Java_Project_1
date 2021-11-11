@@ -1,10 +1,10 @@
 package com.dollarsbank.exceptions;
 
-public class AccountDoesNotExist extends Exception{
+public class AccountDoesNotExistException extends Exception{
 
 	private static final long serialVersionUID = 1L;
 
-	public AccountDoesNotExist() {
+	public AccountDoesNotExistException() {
 		System.out.println("Account Does Not Exist. Try Again! \n");
 	}
 

@@ -1,5 +1,7 @@
 package com.dollarsbank.utility;
 
+import com.dollarsbank.exceptions.InvalidChoiceException;
+
 public class ConsolePrinterUtility {
 	
 	//Box Wrapper 
@@ -29,19 +31,20 @@ public class ConsolePrinterUtility {
 	}
 	
 	//Starter Choice
-	public void printStartChoice(int choice) {
+	public void printStartChoice(int choice) throws InvalidChoiceException {
 		switch(choice) {
 			case 1: 
-				//Enter Details for New Account
-				wrapper("Enter Details For New Account");
+				//Enter Details for New Customer
+				wrapper("Enter Details For New Customer");
+				break;
 			case 2:
 				//Enter Login Details 
 				wrapper("Enter Login Details"); 
+				break;
 			case 3: 
 				//Exit
 				wrapper("Exiting the Program. Thank you for using DOLLARSBANK!");
-			default: 
-				//insert error
+				break;
 		}
 	}
 	
@@ -59,69 +62,89 @@ public class ConsolePrinterUtility {
 	}
 	
 	//Customer Choice
-	public void printCustomerChoice(int choice) {
+	public void printCustomerChoice(int choice) throws InvalidChoiceException {
 		switch(choice) {
 			case 1: 
 				//Opening a new account
 				wrapper("Enter Details for New Account");
+				break;
 				
 			case 2: 
 				//Deposit Amount
-				printWhichAccount();
+				printWhichAccount(1);
+				break;
 
 			case 3: 
 				//Withdraw Amount 
-				printWhichAccount();
+				printWhichAccount(2);
+				break;
 
 			case 4: 
 				//Funds Transfer
-				printWhichAccount();
+				printWhichAccount(3);
+				break;
 
 			case 5:
 				//View 5 Recent Transactions
 				wrapper("5 Recent Transactions:"); 
+				break;
 
 			case 6:
 				//Display Customer Information 
 				wrapper("Customer Information");
+				break;
 				
 			case 7:
 				//Sign out
 				wrapper("Signing Out!");
+				break;
 				
 			default: 
-				//insert error
+				throw new InvalidChoiceException();
 		}
 		
 	}
 
 	
 	//Which Account? 
-	public void printWhichAccount() {
-		wrapper("Which Account?"); 
-		System.out.println("1. Savings\n" + "2. Checking\n" + "3. Credit\n");
+	public void printWhichAccount(int choice) {
+		switch(choice) {
+			case 1:
+				wrapper("Despositing"); 
+				break;
+			case 2: 
+				wrapper("Withdrawing"); 
+				break;
+			case 3: 
+				wrapper("Transfering"); 
+				break;
+			default: 
+				break;
+				
+		}
 		
-		//TODO: Make Green!!! 
-		System.out.println("\nEnter Choice (1,2 or 3) :");
 	}
 	
 	//accountChoice
-	public void printAccount(int choice) {
+	public void printAccount(int choice) throws InvalidChoiceException {
 		switch(choice) {
 		case 1: 
 			//Savings Account
 			wrapper("Savings Account");
+			break;
 			
 		case 2: 
 			//Checking Account
 			wrapper("Checking Account");
+			break;
 			
 		case 3: 
 			//Credit Account
 			wrapper("Credit Account");
+			break;
 			
 		default: 
-			//insert error
+			throw new InvalidChoiceException();
 		}
 
 	}
