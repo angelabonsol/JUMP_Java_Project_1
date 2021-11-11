@@ -1,32 +1,43 @@
 package com.dollarsbank.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Customer {
 	
-	String name, address, userId, password; 
-	int contactNum; 
-	double balance;
+	private String name, address, userId, password, contactNum; 
+	private Account firstAcc;
 	
 	private List<Account> accounts;
 	private List<String> transactions;
 	
 	public Customer() {
-		new Customer();
+		this("N/A", "N/A", "U000000", "password", "123456789", new Account());
 	}
 	
-	public Customer(String name, String address, String userId, String password, int contactNum, double balance,
-			List<Account> accounts) {
+	//For retrieval in file
+	public Customer(String name, String address, String userId, String password, String contactNum) {
 		super();
 		this.name = name;
 		this.address = address;
 		this.userId = userId;
 		this.password = password;
 		this.contactNum = contactNum;
-		this.balance = balance;
-		this.accounts = accounts;
 	}
-
+	
+	//For creating customer
+	public Customer(String name, String address, String userId, String password, String contactNum,
+			Account firstAcc) {
+		super();
+		this.name = name;
+		this.address = address;
+		this.userId = userId;
+		this.password = password;
+		this.contactNum = contactNum;
+		this.firstAcc = firstAcc;
+		accounts.add(firstAcc);
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -59,20 +70,20 @@ public class Customer {
 		this.password = password;
 	}
 
-	public int getContactNum() {
+	public String getContactNum() {
 		return contactNum;
 	}
 
-	public void setContactNum(int contactNum) {
+	public void setContactNum(String contactNum) {
 		this.contactNum = contactNum;
 	}
-	
-	public double getBalance() {
-		return balance;
+
+	public Account getFirstAcc() {
+		return firstAcc;
 	}
 
-	public void setBalance(double balance) {
-		this.balance = balance;
+	public void setFirstAcc(Account firstAcc) {
+		this.firstAcc = firstAcc;
 	}
 
 	public List<Account> getAccounts() {
@@ -93,9 +104,16 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "Customer [name=" + name + ", address=" + address + ", userId=" + userId + ", password=" + password
-				+ ", contactNum=" + contactNum + ", balance=" + balance + ", accounts=" + accounts + "]";
+		return "Name:" + name + "\n" 
+			+  "Address:" + address + "\n" 
+			+  "User ID:" + userId + "\n" 
+			+  "Password:" + password + "\n"
+			+  "Contact Number:" + contactNum + "\n"
+			+  "Accounts:" + accounts ;
 	}
 	
+	public String fileFormat() {
+		return name + "  " + address + "  " + userId + "  " + password + "  " + contactNum;
+	}
 
 }

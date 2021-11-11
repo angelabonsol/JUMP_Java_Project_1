@@ -1,0 +1,20 @@
+ariana  123  Initial Deposit Amount  30000.00  Fri Nov 5 12:08:56 PDT 2021
+sheeran  122  Initial Deposit Amount  10000.25  Fri Nov 5 12:08:56 PDT 2021
+njonas  143  Initial Deposit Amount  45000.20   Fri Nov 5 12:08:56 EST 2021
+jjonas  144  Initial Deposit Amount  100000.00  Fri Oct 22 12:08:56 EST 2021
+kjonas  145  Initial Deposit Amount  12000.10  Fri Oct 22 12:08:56 EST 2021
+ariana  245  Initial Deposit Amount  50000.00  Fri Oct 22 12:08:56 PDT 2021
+jjonas  267  Initial Deposit Amount  25000.00  Fri Nov 5 12:08:56 PDT 2021
+ariana  123  Deposit  20000.00  Mon Nov 8 12:08:56 PDT 2021
+jjonas  144  Deposit  125000.00  Fri Oct 29 12:08:56 EST 2021
+njonas  143  Withdraw  20000.00  Fri Oct 29 12:08:56 EST 2021
+kjonas  145  Withdraw  50000.00  Fri Oct 29 12:08:56 EST 2021
+jjonas  144  Transfer  200000.00  Mon Nov 8 12:08:56 PDT 2021
+jjonas  267  Transfer  25000.00  Mon Nov 8 12:08:56 PDT 2021
+jjonas  144  Deposit  100000.00  Mon Nov 1 12:08:56 EST 2021
+jjonas  144  Deposit  100000.00  Tue Nov 2 12:08:56 EST 2021
+jjonas  144  Deposit  50000.00  Wed Nov 3 12:08:56 EST 2021
+jjonas  144  Deposit  50000.00  Thu Nov 4 12:08:56 EST 2021
+
+
+
