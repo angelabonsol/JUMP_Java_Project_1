@@ -1,7 +1,9 @@
-Ariana Grande  456 Grande St  7184569100  ariana  Grande91
-Ed Sheeran  23 Jump St  3478192234  sheeran  Theateam3
-Nick Jonas  2 Sesame Ave  7184778945  njonas  Jealous45
-Joe Jonas  3 Sesame Ave  4557895679  jjonas  Thebetterjonas1
-Kevin Jonas  4589 Waverly Pl  9172345678  kjonas  Danielle9
+Ariana Grande  456 Grande St  ariana  Grande91  7184569100
+Ed Sheeran  23 Jump St  sheeran  Theateam3  3478192234
+Nick Jonas  2 Sesame Ave  njonas  Jealous45  7184778945
+Joe Jonas  3 Sesame Ave  jjonas  Thebetterjonas1  4557895679
+Kevin Jonas  4589 Waverly Pl  kjonas  Danielle9  9172345678
 Justin Bieber  234 Malibu St  jbieber  Hailey234  2349995678
 David Archuleta  56 Richmond Road  darchie  David1999  2314569999
+Angela  123 Sesame St  angela  bonsol  123456789
+Jane  123 Doe St  jdoe  Loveme123  123445556

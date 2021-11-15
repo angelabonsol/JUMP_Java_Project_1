@@ -2,6 +2,7 @@ package com.dollarsbank.utility;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import com.dollarsbank.model.Account;
 import com.dollarsbank.model.Customer;
@@ -13,7 +14,7 @@ public class DataGeneratorStubUtil {
 	List<Customer> cList = file.readCustomerFile();
 	List<Account> aList = file.readAccountFile();
 	
-	//TODO: Find Customer by User Id
+	// Find Customer by User Id
 	public Customer findCustomer(String userId){
 		for (Customer cus : cList) {
 			if(cus.getUserId().equals(userId)) {
@@ -23,7 +24,7 @@ public class DataGeneratorStubUtil {
 		return null;
 	}
 	
-	//TODO: Find Account by id
+	// Find Account by id
 	public Account findAccount(int id){
 		for (Account acc : aList) {
 			if(acc.getId() == id) {
@@ -33,7 +34,7 @@ public class DataGeneratorStubUtil {
 		return null;
 	}
 	
-	//TODO: Find Accounts of Customer by userId
+	// Find Accounts of Customer by userId
 	public List<Account> findAccountsOfCustomer(String userId){
 		
 		List<Account> cusAcc = new ArrayList<Account>();
@@ -48,6 +49,4 @@ public class DataGeneratorStubUtil {
 		
 	}
 	
-	
-
 }

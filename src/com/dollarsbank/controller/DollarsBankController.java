@@ -34,9 +34,11 @@ public class DollarsBankController {
 	// Create a New Customer
 	public Customer newCustomer(String name, String address, String contact, String userId, String password, double deposit) throws IOException {
 		
-		Customer customer = new Customer(name, address, userId, password, contact, new Account(accountIdGenerator(), deposit, userId));
+		Account firstAcc = new Account(accountIdGenerator(), deposit, userId);
+		Customer customer = new Customer(name, address, userId, password, contact, firstAcc);
 		
 		file.addCustomerToFile(customer);
+		file.addAccountToFile(firstAcc);
 		
 		return customer;
 		
@@ -44,13 +46,25 @@ public class DollarsBankController {
 	
 	// Login
 	public Customer Login(String cusId, String password) throws InvalidCredentialsException {
-		
-		if(dataGen.findCustomer(cusId) != null) 
-			return dataGen.findCustomer(cusId);
-		
-		else 
-			throw new InvalidCredentialsException();
+				
+		try {
+			Customer cus = dataGen.findCustomer(cusId);
 			
+			if(cus != null) {
+				// checks password too 
+				if(cus.getPassword().equals(password))
+					return cus;
+				throw new InvalidCredentialsException();
+			}
+			
+			else 
+				throw new InvalidCredentialsException();
+			
+		} catch(InvalidCredentialsException e) {
+			
+		}
+		return null;
+	
 	}
 	
 	// Open New Account
@@ -66,17 +80,21 @@ public class DollarsBankController {
 	}
 	
 	// Deposit Amount
-	public void deposit(String cusId, int id, double deposit) throws AccountDoesNotExistException, NumberFormatException, IOException {
-		if(dataGen.findAccount(id) != null) {
-			file.updateBalanceToFile(id, deposit + dataGen.findAccount(id).getBalance());
-			file.addTransactionToFile(cusId, id, "Deposit", deposit, date);
+	public void deposit(String cusId, int id, double deposit) throws AccountDoesNotExistException, IOException {
+		try {
+			if(dataGen.findAccount(id) != null) {
+				file.updateBalanceToFile(id, deposit + dataGen.findAccount(id).getBalance());
+				file.addTransactionToFile(cusId, id, "Deposit", deposit, date);
+			}
+			else 
+				throw new AccountDoesNotExistException();
+		} catch(AccountDoesNotExistException e) {
+			
 		}
-		else 
-			throw new AccountDoesNotExistException();
 	}
 	
 	// Withdraw Amount 
-	public void withdraw(String cusId, int id, double withdraw) throws Exception {
+	public void withdraw(String cusId, int id, double withdraw) throws AccountDoesNotExistException, Exception {
 		if(dataGen.findAccount(id) != null) {
 			if(dataGen.findAccount(id).getBalance() - withdraw > 0) {
 				file.updateBalanceToFile(id, dataGen.findAccount(id).getBalance() - withdraw);
@@ -90,7 +108,7 @@ public class DollarsBankController {
 	}
 	
 	// Fund Transfer
-	public void transfer(String cusId, int fromAccount, int toAccount, double amount) throws AccountDoesNotExistException, NumberFormatException, IOException {
+	public void transfer(String cusId, int fromAccount, int toAccount, double amount) throws AccountDoesNotExistException, IOException {
 		if((dataGen.findAccount(fromAccount) != null) && (dataGen.findAccount(toAccount) != null)) {
 			file.updateBalanceToFile(fromAccount, dataGen.findAccount(fromAccount).getBalance() - amount);
 			file.updateBalanceToFile(toAccount, amount + dataGen.findAccount(toAccount).getBalance());
@@ -104,7 +122,7 @@ public class DollarsBankController {
 
 	// 5 Recent Transactions
 	public void recentTransactions() {
-		List<String> transactions = file.transactionsConsoleFormat();
+		List<String> transactions = file.transactionsOfCustomerConsoleFormat();
 		//only nit pick 5
 		for (String t : transactions) {
 			
@@ -117,6 +135,7 @@ public class DollarsBankController {
 		return customer.toString();
 	}
 	
+	// Id Generator 
 	public int accountIdGenerator() {
 		
 		int id = random.nextInt(1000);

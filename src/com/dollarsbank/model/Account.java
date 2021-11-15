@@ -1,7 +1,5 @@
 package com.dollarsbank.model;
 
-import com.dollarsbank.model.Customer;
-
 public class Account {
 	
 	public static enum AccountType{
@@ -69,10 +67,11 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return "Account [id=" + id + ", balance=" + balance + ", type=" + type + ", customerId=" + customerId + "]";
+		return "[id= " + id + ", balance= " + balance + ", type= " + type + "]";
 	}
 	
 	public String fileFormat() {
 		return id + "  " + balance + "  " + type.toString() + "  " + customerId;
 	}
+	
 }

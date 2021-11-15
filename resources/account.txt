@@ -5,3 +5,4 @@
 145  12000.10  SAVINGS  kjonas
 245  50000.00  CHECKING  ariana
 267  50000.00  CHECKING  jjonas
+182  300.0  CHECKING  njonas

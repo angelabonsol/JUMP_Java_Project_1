@@ -46,6 +46,11 @@ public class FileStorageUtility {
 				Customer cus = new Customer(tokens[0], tokens[1], tokens[2], tokens[3], tokens[4]);
 
 				cList.add(cus);
+				
+				cus.setAccounts(getCustomerAccounts(aList, cus));
+				
+//				cus.setTransactions(readCustomerTransactions(cus.getUserId()));
+				
 			}
 
 		} catch(FileNotFoundException e){
@@ -66,7 +71,7 @@ public class FileStorageUtility {
 	}
 	
 	// Read Account File Method
-	public List<Account> readAccountFile(){
+	public List<Account> readAccountFile() {
 
 		try {
 
@@ -100,6 +105,19 @@ public class FileStorageUtility {
 
 		return aList;
 
+	}
+	
+	// Gets the accounts that belong to the customer only
+	public List<Account> getCustomerAccounts(List<Account> allAccs, Customer cus){
+		List<Account> cusAccs = new ArrayList<Account>();
+		
+		for (Account acc : allAccs) {
+			if(acc.getCustomerId().equals(cus.getUserId())) {
+				cusAccs.add(acc);
+			}
+		}
+	
+		return cusAccs;
 	}
 	
 	// Read Transaction File for Specific customer 
@@ -168,7 +186,8 @@ public class FileStorageUtility {
 		buffWriter = new BufferedWriter(fileWriter);
 		printWriter = new PrintWriter(buffWriter, true);
 
-		aList.add(account);
+		aList.add(account); 
+		
 		printWriter.println(account.fileFormat());
 
 		if (buffWriter != null) 
@@ -186,7 +205,7 @@ public class FileStorageUtility {
 	
 	// Add to Transactions File 
 	public void addTransactionToFile(String cusId, int accId, String activity, double amount, Date date) throws IOException {
-		file = new File("resources/account.txt");
+		file = new File("resources/transactions.txt");
 		fileWriter = new FileWriter(file, true);
 		buffWriter = new BufferedWriter(fileWriter);
 		printWriter = new PrintWriter(buffWriter, true);
@@ -211,10 +230,10 @@ public class FileStorageUtility {
 	}
 	
 	// Update Balance to Account File
-	public void updateBalanceToFile(int id, double newBalance) throws NumberFormatException, IOException {
+	public void updateBalanceToFile(int id, double newBalance) throws IOException {
 		
 		// deleting in file 
-		file = new File("resources/employees.txt");
+		file = new File("resources/account.txt");
 		File temp = File.createTempFile("tmp", "");
 
 		fileReader = new FileReader(file);
@@ -274,8 +293,8 @@ public class FileStorageUtility {
 		
 	}
 	
-	// returns console format of the transactions
-	public List<String> transactionsConsoleFormat(){
+	// returns console format of the transactions of Customer 
+	public List<String> transactionsOfCustomerConsoleFormat(){
 		return transactions;
 	}
 	
